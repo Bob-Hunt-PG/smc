@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>EFI OPS - Custom HTMLs</title>
+<LINK href="include/AdminStyles.css" rel=stylesheet type=text/css>
+</head>
+<SCRIPT LANGUAGE=javascript>
+function openWin(strURL)
+{
+    var winCurrent
+	winCurrent = window.open(strURL);
+	winCurrent.focus(); 
+}
+function confirm_delete_link(URL)
+{
+ if (confirm("Are you sure you want to delete this record?"))
+ {
+	location.href = URL
+ } 
+}
+
+var delete_pressed = false;
+function delete_pressed_button()
+{
+	delete_pressed = true;
+}
+function check_data()
+{
+if (delete_pressed) {
+	delete_pressed = false;
+	if (confirm("Are you sure you want to delete this record?")) {
+		return(true);
+	}
+	return(false);
+}
+// <!--standard_javascript-->
+}
+// <!--custom_javascript-->
+</SCRIPT>
+<BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+
+
+<script type='text/javascript' src='Include/ckeditor/ckeditor.js?4'></script>
+
+<script>
+function editor_generate(strName)
+{
+frm1.elements[strName].id=strName;
+//<![CDATA[ 
+CKEDITOR.replace( strName,  { toolbar : [{ name: 'document', items : ['Source' ] },
+{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },'/',
+{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+{ name: 'styles', items : [ 'Font','FontSize' ] },{ name: 'colors', items : [ 'TextColor','BGColor' ] },{ name: 'enterMode', items : [ CKEDITOR.ENTER_BR ] },
+], enterMode :  CKEDITOR.ENTER_BR, shiftEnterMode : CKEDITOR.ENTER_P});
+//]]>
+CKEDITOR.config.resize_enabled = true;
+CKEDITOR.config.toolbarStartupExpanded = true;
+CKEDITOR.config.removePlugins = 'elementspath';
+
+
+
+//<![CDATA[ 
+//CKEDITOR.replace( 'screentiphelptext', "{ toolbar : [{ name: 'document', items : [ 'Source'] }," +
+//	"{ name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },'/'," +
+//	"{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] }," +
+//	"{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] }," +
+//	"{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },{ name: 'insert', items : [ 'Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak' ] },'/'," +
+//	"{ name: 'styles', items : [ 'Format','Font','FontSize' ] },	{ name: 'colors', items : [ 'TextColor','BGColor' ] }," +
+//	"{ name: 'tools', items : [ 'ShowBlocks' ] }], skin : 'office2003', width :   '200px', height: '120px'}"
+//); 
+//]]>
+CKEDITOR.config.toolbarStartupExpanded = true;CKEDITOR.config.removePlugins = 'elementspath';
+
+}
+
+
+
+</script>
+
+
+
+<div style="visibility: hidden; position: absolute; filter:alpha(opacity=85); -moz-opacity:0.85; opacity: 0.85; z-index: 1; top: 5px; left: 5px; width:300px;" id="help_popup"> 
+<IFRAME id="frTest" style="z-index:-1;width:300px;height:300;position:absolute;top:0;left:0;display:inline;" frameborder=0 scrolling=no marginwidth=0 src="" marginheight=0></iframe>
+  <table class="bordertable" width="300">
+    <tr><td class=bordertableheader id="help_header"></td></tr>
+    <tr><td id="help_body"></td></tr>
+  </table>
+</div>
+
+<table border=0 cellpadding="0" cellspacing="0"  width="100%" height="100%" id="maintable">
+<tr><td valign="top" align="left" width="100%" height="24" colspan=2><script type="text/javascript" src="Include/ajaxsync.js"></script>
+<link href="include/highslide-styles.css" rel="stylesheet" type="text/css" />
+      <script type="text/javascript" src="Include/highslide.js"></script>
+      <script type="text/javascript" src="Include/highslide.cfg.js"></script>
+<!--sessionHeader
+<center><iframe src="ShowPage.asp?type=sessionheader&opssess=65240922C8E3075DA55218207B4C64188E3D1A04AD77AE9DF103DEC7E6F28EDD076FA850A838C0A17F3BB6DA5357F3B8BA14EA96C46204DDB584BC04AD291603309192C6EBC824F02C10813E8CED0BA7C1571EF36B9009224F0DD16ECDC617878706F8EBAF25F15BE6ABA7BBBD9DEF467D49370B3BF609DA738EB8659B325EE7A7D8720533CDBC6EFCEF78FB90187283C1037F9F555A32E3226CB70EC2FB63A784AB196943C0143135536D77EB359C973FF247714C4CD71C4E79329503FA467D636429EFA45740B5930FF4AC3C1BCDA98E6BBF8F524550BCAE49ABB87EDACF5B596A3C2404F2C1F189796F0C5A36B995A6B02EFD85527779BD35BC871390B9AFCDABECB1B207EEB2B413F740B9B1A6732C7B9949F01B7A9C" width="790" height="95" frameborder="0" scrolling="no"></iframe></center>
+<br>
+<img src="images/spacer.gif" width="30" height="0" /><img src="images/ptr.gif" border="0" /> <a href="ShowPage.asp?dsfvweb.htm">Campaign Management Menu</a>
+sessionHeader-->
+<!--HEADER-->
+
+	<a href="index.asp" target="_top"><img src="headerimages/EFIOPSlogo.jpg" style="float:left; margin-top:5px;margin-left:30px; width:300px;" border="0" /></a>
+	<div id='cssmenu'>
+		<ul>
+			<li><a href='index.asp'><span><IMG SRC="headerimages/Icon_Home.png" BORDER=0 ALT="home"></span></a></li>
+			<li><a href='artroom.asp'><span><IMG SRC="headerimages/Icon_Artroom.png" BORDER=0 ALT="artroom"></span></a></li>
+			<li class='has-sub '><a href='office.asp'><span><IMG SRC="headerimages/Icon_Office.png"  BORDER=0 ALT="Office"></span></a></li>
+			<li class='has-sub ' ><a href='#'><span><IMG SRC="headerimages/Icon_Modules.png"  BORDER=0 ALT="Modules"></span></a>
+				<ul>
+					<li class='has-sub '><a href='gcIndex.asp'><span><IMG SRC="headerimages/Icon_GC.png"  BORDER=0 ALT="GroupCanvas"></span></a></li>
+					<li class='has-sub '><a href='vprint.asp'><span><IMG SRC="headerimages/Icon_VP.png"  BORDER=0 ALT="VPrint"></span></a></li>
+					<li class='has-sub '><a href='vindex.asp'><span><IMG SRC="headerimages/Icon_VW.png"  BORDER=0 ALT="VWeb"></span></a></li>
+					<li class='has-sub '><a href='njindex.asp'><span><IMG SRC="headerimages/Icon_NJ.png"  BORDER=0 ALT="NexJob"></span></a></li>
+				</ul>
+			</li>
+			<li><a href='admin.asp'><span><IMG SRC="headerimages/Icon_Admin.png" BORDER=0 ALT="admin"></span></a></li>
+			<li><a href='Login.asp'><span><IMG SRC="headerimages/Icon_Logout.png" BORDER=0 ALT="log out"></span></a></li>
+		</ul>
+		<div style="clear:both"></div>
+		<div style="position:absolute;left:75px;top:0px;">
+		  <a href="#" onclick="javascript:if(document.getElementById('adddashboard').style.display=='none'){document.getElementById('adddashboard').style.display=''}else{document.getElementById('adddashboard').style.display='none'}"><img src="headerimages/Icon_Add.png"  border="0" title="Add this page to homepage dashboard" align="absbottom" style="border-style: none; border-width: 0px" /></a>
+		</div>
+	</div>
+	<div class="break"></div>
+		  <!--AddToDashboard-->
+		  <br />
+          <table class="bordertable"style="margin-left:40px; display:none" id="adddashboard">
+            <tr><td class="bordertableheader">Add to Dashboard</td></tr>
+            <tr>
+              <td>
+              <table class="wrapper" width="500" border="0">
+                  <tr><td>Page</td><td><input type="text" size="30" id="txtURL" name="txtURL" /></td></tr>
+                  <tr><td>Name</td><td><input type="text" size="30" name="txtName" id="txtName" value="" /></td></tr>
+                  <tr><td>Description</td><td><textarea cols="30" rows="3" name="txtDescription" id="txtDescription"></textarea></td></tr>
+                  <tr><td valign="top">Area</td><td><div id="divDBAreas"></div><input type="text" size="30" name="txtOther" id="txtOther" /></td></tr>
+                  <tr><td></td><td><input type="button" onclick="addToDashboard();" value="Add to Dashboard" /></td></tr>
+              </table>
+              </td>
+            </tr>
+          </table>
+		  <!--/AddToDashboard-->
+
+<!--/HEADER--></td></tr>
+<tr>
+<td valign="top" height="100%"><img src="images/spacer.gif" width="10" border="0"></td>
+<td valign="top" width="100%">
+<TABLE border=0 cellPadding=0 cellSpacing=0>
+  <TBODY>
+ <TR>
+    <td width="20">&nbsp;</td>
+    <TD><h1>Custom HTMLs  for SMC</h1>
+      <TABLE cellSpacing=0 cellPadding=0 align=center border=0  width="100%"><TBODY>
+              <SCRIPT language="javascript">
+function openHelp(strURL)
+{
+    var winCurrent
+	winCurrent = window.open(strURL, "", "width=550,height=400,toolbar=0,status=0,location=0,menubar=0,scrollbars=1,resizable=1");
+	winCurrent.focus(); 
+}
+</SCRIPT>
+              <TR>
+                <TD height=22 width=5 align=right><IMG height=22 alt="" 
+                  src="images/form_tab_start_off.gif" width=5 border=0></TD>
+                <TD background=images/tbl_haut.gif width="100%">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <tr>
+                      <TD class=form_tab_off style="PADDING-LEFT: 15px" background=images/form_tab_bg_off.gif nowrap><A class=A_Tab href="Show.asp?Area=printbroker&Id=145">Print Broker Details</A></TD>
+
+              
+
+<TD><TABLE cellSpacing=0 cellPadding=0 border=0><TBODY><TR><TD><IMG height=22 alt="" src="images/form_tab_btw_off_off.gif" width=25 border=0></TD><TD class=form_tab_off background="images/form_tab_bg_off.gif" nowrap><A class=A_Tab href="showlist.asp?Area=Customer&filterfield=PrintBroker_Id&filtertable=PrintBroker&filterid=145&InTable=">Customers</A></TD></TR></TBODY></TABLE></TD>
+<TD><TABLE cellSpacing=0 cellPadding=0 border=0><TBODY><TR><TD><IMG height=22 alt="" src="images/form_tab_btw_off_off.gif" width=25 border=0></TD><TD class=form_tab_off background="images/form_tab_bg_off.gif" nowrap><A class=A_Tab href="showlist.asp?Area=Image&filterfield=Branding_Id&filtertable=PrintBroker&filterid=145&InTable=">Files</A></TD></TR></TBODY></TABLE></TD>
+<TD><TABLE cellSpacing=0 cellPadding=0 border=0><TBODY><TR><TD><IMG height=22 alt="" src="images/form_tab_btw_off_on.gif" width=25 border=0></TD><TD class=form_tab_on background="images/form_tab_bg_on.gif" nowrap><A class=A_Tab href="showlist.asp?Area=CustomHTML&filterfield=PrintBroker_Id&filtertable=PrintBroker&filterid=145&InTable=">Custom&nbsp;HTML</A></TD></TR></TBODY></TABLE></TD>
+
+                      <TD>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><IMG height=22 alt="" src="images/form_tab_btw_on_off.gif" width=25 border=0></TD>
+                            <TD class=form_tab_off background=images/form_tab_bg_off.gif><A class=A_Tab href="javascript:openHelp('Help.asp?Area=customhtml&mode=list&filter=printbroker')">Help</A></TD>
+                            <TD><IMG height=22 alt="" src="images/form_tab_end_off.gif" width=25 border=0></TD>
+                         </TR>
+                         </TBODY>
+                       </TABLE>
+                     </TD>
+                    </TR>
+                  </TABLE>
+                </TD>
+                <TD width=5 height=22><IMG height=22 alt="" src="Images/tbl_haut_d.gif" width=5 border=0></TD>
+              </TR>
+
+  <TR>
+    <TD width=5 background=Images/tbl_g.gif><img src="images/spacer.gif" width=5></TD>
+    <TD class=maintabbg>
+      <TABLE cellPadding=0 cellSpacing=0>
+        <TBODY>
+        <TR>
+          <td><img src=images/spacer.gif width=20 height=1 border=0></td>
+          <td width="100%">
+            <table border=0 cellSpacing=0 cellPadding=0>
+              <TR><TD colspan="2"><!--search-->
+
+<script language=JavaScript>
+
+function showBlock()
+{
+	if (sopts.style.display=='block')
+	{
+		sopts.style.display='none';
+		soptslab.style.display='block';
+	}
+	else
+	{
+		sopts.style.display='block';
+		soptslab.style.display='none';
+	}
+}
+</script>
+
+<form method=post>
+
+      <br>
+      <TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+      <TBODY>
+        <tr>
+          <td class=DataTDGrey width="100%">
+            <TABLE border="0" cellpadding="0" cellspacing="0" width=100% class=wrapper>
+              <tr><td colspan=2><img src="images/spacer.gif" height="5"></td></tr>
+              <TR>
+                <TD align=left valign="middle" nowrap><b>Search&nbsp;Custom HTMLs&nbsp;for:&nbsp;</b></td>
+                <td width="100%">
+                  <input class="textboxtext" name="txtsearchcustomhtml" value=""><b>&nbsp;by&nbsp;</b>
+                    <select class="textboxtext" name='cboxcustomhtml'><option value="2">Branding</option>
+<option value="3">Customer Screen</option>
+<option value="4">HTML File</option>
+<option value="5">Domain</option>
+</select>&nbsp;&nbsp;<input class="btn" type='submit' value='Go' class="textboxtext"  name="btnSubmitcustomhtml" src="images/go.gif" border='0' align=absMiddle>
+                </td>
+              </tr>
+              <tr><td>&nbsp;</td>
+                <td>
+                    <span id=soptslab><a href="javascript:showBlock();">search options</a></span>
+                    <span id=sopts style="display:none">
+                     <input type=radio name=match value="" checked>starts&nbsp;with&nbsp;&nbsp;
+                     <input type=radio name=match value="partial">contains&nbsp;&nbsp;
+                     <input type=radio name=match value="exact">exact match
+                   </span>
+              </td></tr>
+
+              <tr><td colspan=2><b>Found 6</b></td></tr>
+
+              <tr><td colspan=2><img src="images/spacer.gif" height="5"></td></tr>
+            </table>
+          </td>
+        </tr>
+      </TBODY>
+      </TABLE>
+</form>
+<!--/search-->
+</TD></TR>
+
+  
+              <TR><TD align="left" colspan=2><br><img src="images/New.gif" border=0 align=absBottom>&nbsp;<a href="show.asp?Area=customhtml&mode=new&filtertable=printbroker&filterfield=printbroker_id&filterid=145&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&type=">Click here to add a new Custom HTMLs</a>&nbsp;</TD></TR>
+              <TR><TD align="left" colspan=2>&nbsp;</TD></TR>
+              <TR><TD align="left" colspan=2></TD></TR>
+                 <INPUT name=TableName type="hidden" value="CustomHTML">
+              <TR>
+                <TD colspan="2">
+<!--maintable-->
+                  <TABLE border=0 cellPadding=2 cellSpacing=1 class="wrapper" width="100%">
+                  <TBODY>
+                  <!--HEADERROW-->
+                    <TR>
+                      <TD align="left" class="tableheader">Branding</TD>
+					  <TD align="left" class="tableheader">Customer Screen</TD>
+                      <TD align="left" class="tableheader">HTML File</TD>
+                      <td align="center" class="tableheader" width="80">Actions
+</td>
+                    </TR>
+                    <!--/HEADERROW-->
+                    
+                    
+
+                    <TR>
+                      <td align="left" id="firstcolumn" class="DataTD" valign="top"><a href="show.asp?mode=view&id=145&Area=printbroker">SMC</a></td>
+                      <td align="left" class="DataTD" valign="top">Update Registration</td>
+					  <td align="left" class="DataTD" valign="top"><a href="Files/customhtmlhtmlfile/updateregistration95.html" target="_blank">Files/customhtmlhtmlfile/updateregistration95.html</a></td>
+
+                      <td id="lastcolumn" class="DataTD" align="center" valign="top" width="80">
+<a href="show.asp?Area=customhtml&id=398"><img src="images/view.gif" border=0 alt="View"></a>&nbsp;<a href="show.asp?Area=customhtml&mode=update&id=398&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST="><img src="images/change.gif" border=0 alt="Update"></a>&nbsp;<a href="javascript:confirm_delete_link('show.asp?Area=customhtml&mode=delete&id=398&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST=&type=')"><img src="images/delete.gif" border=0 alt="Delete"></a>&nbsp;<a href="javascript:var winCheckAssociations;winCheckAssociations = window.open('AdminDeleteItem.aspx?Table=customhtml&Id=398&opssess=9DCFFF76322D83A75B85557D4B45B0A86730286DA9A1BC9B5D4F7E23E52006528C1BB85B538B9EAE3CE9736E6C61139CFFDA476E70AB20D23173946556E4B166E4D0C28B581A7597B5B29C21DAB8A296DE08400505D38E90AEB8DB429BB17BB9487471741BC71A87A70FEA50940FBE103940A96929F7D54B8AB401917CFDF849F24A23EC7EC7D9B83FE1853DD0976F55CFD62ABD818CFE525F410E7E4FBF49D1FE06DD7A1A6CFCE9F2D9ABBE56E44E7FD627D6A9A47408024ADDE4633EDBDD7A19BBAE89E6049F65094258BB857ABD70E983AC3E3F6AF1FC25E1B0A43042F2F815A8C4B2D40F302E4DD3DA4B64BF82B0D6E721E1928AD83EEA47799F210A855EFB825067090A2114C8792C316B8B9F5453680E4CCE5FE87E','','width=800,height=600,toolbar=0,status=0,location=0,menubar=0,scrollbars=1,resizable=1');winCheckAssotiations.focus();"><img src="images/related.png" border=0 alt="Related" width="20"></a>&nbsp;</td>
+                    </TR>
+                    <TR>
+                      <td align="left" id="firstcolumn" class="DataTD" valign="top"><a href="show.asp?mode=view&id=145&Area=printbroker">SMC</a></td>
+                      <td align="left" class="DataTD" valign="top">View Orders</td>
+					  <td align="left" class="DataTD" valign="top"><a href="Files/customhtmlhtmlfile/orders64.html" target="_blank">Files/customhtmlhtmlfile/orders64.html</a></td>
+
+                      <td id="lastcolumn" class="DataTD" align="center" valign="top" width="80">
+<a href="show.asp?Area=customhtml&id=399"><img src="images/view.gif" border=0 alt="View"></a>&nbsp;<a href="show.asp?Area=customhtml&mode=update&id=399&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST="><img src="images/change.gif" border=0 alt="Update"></a>&nbsp;<a href="javascript:confirm_delete_link('show.asp?Area=customhtml&mode=delete&id=399&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST=&type=')"><img src="images/delete.gif" border=0 alt="Delete"></a>&nbsp;<a href="javascript:var winCheckAssociations;winCheckAssociations = window.open('AdminDeleteItem.aspx?Table=customhtml&Id=399&opssess=9DCFFF76322D83A75B85557D4B45B0A86730286DA9A1BC9B5D4F7E23E52006528C1BB85B538B9EAE3CE9736E6C61139CFFDA476E70AB20D23173946556E4B166E4D0C28B581A7597B5B29C21DAB8A296DE08400505D38E90AEB8DB429BB17BB9487471741BC71A87A70FEA50940FBE103940A96929F7D54B8AB401917CFDF849F24A23EC7EC7D9B83FE1853DD0976F55CFD62ABD818CFE525F410E7E4FBF49D1FE06DD7A1A6CFCE9F2D9ABBE56E44E7FD627D6A9A47408024ADDE4633EDBDD7A19BBAE89E6049F65094258BB857ABD70E983AC3E3F6AF1FC25E1B0A43042F2F815A8C4B2D40F302E4DD3DA4B64BF82B0D6E721E1928AD83EEA47799F210A855EFB825067090A2114C8792C316B8B9F5453680E4CCE5FE87E','','width=800,height=600,toolbar=0,status=0,location=0,menubar=0,scrollbars=1,resizable=1');winCheckAssotiations.focus();"><img src="images/related.png" border=0 alt="Related" width="20"></a>&nbsp;</td>
+                    </TR>
+                    <TR>
+                      <td align="left" id="firstcolumn" class="DataTD" valign="top"><a href="show.asp?mode=view&id=145&Area=printbroker">SMC</a></td>
+                      <td align="left" class="DataTD" valign="top">Checkout</td>
+					  <td align="left" class="DataTD" valign="top"><a href="Files/customhtmlhtmlfile/checkout131.html" target="_blank">Files/customhtmlhtmlfile/checkout131.html</a></td>
+
+                      <td id="lastcolumn" class="DataTD" align="center" valign="top" width="80">
+<a href="show.asp?Area=customhtml&id=400"><img src="images/view.gif" border=0 alt="View"></a>&nbsp;<a href="show.asp?Area=customhtml&mode=update&id=400&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST="><img src="images/change.gif" border=0 alt="Update"></a>&nbsp;<a href="javascript:confirm_delete_link('show.asp?Area=customhtml&mode=delete&id=400&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST=&type=')"><img src="images/delete.gif" border=0 alt="Delete"></a>&nbsp;<a href="javascript:var winCheckAssociations;winCheckAssociations = window.open('AdminDeleteItem.aspx?Table=customhtml&Id=400&opssess=9DCFFF76322D83A75B85557D4B45B0A86730286DA9A1BC9B5D4F7E23E52006528C1BB85B538B9EAE3CE9736E6C61139CFFDA476E70AB20D23173946556E4B166E4D0C28B581A7597B5B29C21DAB8A296DE08400505D38E90AEB8DB429BB17BB9487471741BC71A87A70FEA50940FBE103940A96929F7D54B8AB401917CFDF849F24A23EC7EC7D9B83FE1853DD0976F55CFD62ABD818CFE525F410E7E4FBF49D1FE06DD7A1A6CFCE9F2D9ABBE56E44E7FD627D6A9A47408024ADDE4633EDBDD7A19BBAE89E6049F65094258BB857ABD70E983AC3E3F6AF1FC25E1B0A43042F2F815A8C4B2D40F302E4DD3DA4B64BF82B0D6E721E1928AD83EEA47799F210A855EFB825067090A2114C8792C316B8B9F5453680E4CCE5FE87E','','width=800,height=600,toolbar=0,status=0,location=0,menubar=0,scrollbars=1,resizable=1');winCheckAssotiations.focus();"><img src="images/related.png" border=0 alt="Related" width="20"></a>&nbsp;</td>
+                    </TR>
+                    <TR>
+                      <td align="left" id="firstcolumn" class="DataTD" valign="top"><a href="show.asp?mode=view&id=145&Area=printbroker">SMC</a></td>
+                      <td align="left" class="DataTD" valign="top">Order Confirmation</td>
+					  <td align="left" class="DataTD" valign="top"><a href="Files/customhtmlhtmlfile/orderconfirmation10.html" target="_blank">Files/customhtmlhtmlfile/orderconfirmation10.html</a></td>
+
+                      <td id="lastcolumn" class="DataTD" align="center" valign="top" width="80">
+<a href="show.asp?Area=customhtml&id=401"><img src="images/view.gif" border=0 alt="View"></a>&nbsp;<a href="show.asp?Area=customhtml&mode=update&id=401&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST="><img src="images/change.gif" border=0 alt="Update"></a>&nbsp;<a href="javascript:confirm_delete_link('show.asp?Area=customhtml&mode=delete&id=401&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST=&type=')"><img src="images/delete.gif" border=0 alt="Delete"></a>&nbsp;<a href="javascript:var winCheckAssociations;winCheckAssociations = window.open('AdminDeleteItem.aspx?Table=customhtml&Id=401&opssess=9DCFFF76322D83A75B85557D4B45B0A86730286DA9A1BC9B5D4F7E23E52006528C1BB85B538B9EAE3CE9736E6C61139CFFDA476E70AB20D23173946556E4B166E4D0C28B581A7597B5B29C21DAB8A296DE08400505D38E90AEB8DB429BB17BB9487471741BC71A87A70FEA50940FBE103940A96929F7D54B8AB401917CFDF849F24A23EC7EC7D9B83FE1853DD0976F55CFD62ABD818CFE525F410E7E4FBF49D1FE06DD7A1A6CFCE9F2D9ABBE56E44E7FD627D6A9A47408024ADDE4633EDBDD7A19BBAE89E6049F65094258BB857ABD70E983AC3E3F6AF1FC25E1B0A43042F2F815A8C4B2D40F302E4DD3DA4B64BF82B0D6E721E1928AD83EEA47799F210A855EFB825067090A2114C8792C316B8B9F5453680E4CCE5FE87E','','width=800,height=600,toolbar=0,status=0,location=0,menubar=0,scrollbars=1,resizable=1');winCheckAssotiations.focus();"><img src="images/related.png" border=0 alt="Related" width="20"></a>&nbsp;</td>
+                    </TR>
+                    <TR>
+                      <td align="left" id="firstcolumn" class="DataTD" valign="top"><a href="show.asp?mode=view&id=145&Area=printbroker">SMC</a></td>
+                      <td align="left" class="DataTD" valign="top">Master Template</td>
+					  <td align="left" class="DataTD" valign="top"><a href="Files/customhtmlhtmlfile/master648.html" target="_blank">Files/customhtmlhtmlfile/master648.html</a></td>
+
+                      <td id="lastcolumn" class="DataTD" align="center" valign="top" width="80">
+<a href="show.asp?Area=customhtml&id=402"><img src="images/view.gif" border=0 alt="View"></a>&nbsp;<a href="show.asp?Area=customhtml&mode=update&id=402&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST="><img src="images/change.gif" border=0 alt="Update"></a>&nbsp;<a href="javascript:confirm_delete_link('show.asp?Area=customhtml&mode=delete&id=402&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST=&type=')"><img src="images/delete.gif" border=0 alt="Delete"></a>&nbsp;<a href="javascript:var winCheckAssociations;winCheckAssociations = window.open('AdminDeleteItem.aspx?Table=customhtml&Id=402&opssess=9DCFFF76322D83A75B85557D4B45B0A86730286DA9A1BC9B5D4F7E23E52006528C1BB85B538B9EAE3CE9736E6C61139CFFDA476E70AB20D23173946556E4B166E4D0C28B581A7597B5B29C21DAB8A296DE08400505D38E90AEB8DB429BB17BB9487471741BC71A87A70FEA50940FBE103940A96929F7D54B8AB401917CFDF849F24A23EC7EC7D9B83FE1853DD0976F55CFD62ABD818CFE525F410E7E4FBF49D1FE06DD7A1A6CFCE9F2D9ABBE56E44E7FD627D6A9A47408024ADDE4633EDBDD7A19BBAE89E6049F65094258BB857ABD70E983AC3E3F6AF1FC25E1B0A43042F2F815A8C4B2D40F302E4DD3DA4B64BF82B0D6E721E1928AD83EEA47799F210A855EFB825067090A2114C8792C316B8B9F5453680E4CCE5FE87E','','width=800,height=600,toolbar=0,status=0,location=0,menubar=0,scrollbars=1,resizable=1');winCheckAssotiations.focus();"><img src="images/related.png" border=0 alt="Related" width="20"></a>&nbsp;</td>
+                    </TR>
+                    <TR>
+                      <td align="left" id="firstcolumn" class="DataTD" valign="top"><a href="show.asp?mode=view&id=145&Area=printbroker">SMC</a></td>
+                      <td align="left" class="DataTD" valign="top">New Registration</td>
+					  <td align="left" class="DataTD" valign="top"><a href="Files/customhtmlhtmlfile/registration276.html" target="_blank">Files/customhtmlhtmlfile/registration276.html</a></td>
+
+                      <td id="lastcolumn" class="DataTD" align="center" valign="top" width="80">
+<a href="show.asp?Area=customhtml&id=488"><img src="images/view.gif" border=0 alt="View"></a>&nbsp;<a href="show.asp?Area=customhtml&mode=update&id=488&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST="><img src="images/change.gif" border=0 alt="Update"></a>&nbsp;<a href="javascript:confirm_delete_link('show.asp?Area=customhtml&mode=delete&id=488&RT=customhtml&RM=list&RID=&RFT=printbroker&RFF=printbroker_id&RFID=145&RFIT=&RN=1&RSV=&RSF=0&RST=&type=')"><img src="images/delete.gif" border=0 alt="Delete"></a>&nbsp;<a href="javascript:var winCheckAssociations;winCheckAssociations = window.open('AdminDeleteItem.aspx?Table=customhtml&Id=488&opssess=9DCFFF76322D83A75B85557D4B45B0A86730286DA9A1BC9B5D4F7E23E52006528C1BB85B538B9EAE3CE9736E6C61139CFFDA476E70AB20D23173946556E4B166E4D0C28B581A7597B5B29C21DAB8A296DE08400505D38E90AEB8DB429BB17BB9487471741BC71A87A70FEA50940FBE103940A96929F7D54B8AB401917CFDF849F24A23EC7EC7D9B83FE1853DD0976F55CFD62ABD818CFE525F410E7E4FBF49D1FE06DD7A1A6CFCE9F2D9ABBE56E44E7FD627D6A9A47408024ADDE4633EDBDD7A19BBAE89E6049F65094258BB857ABD70E983AC3E3F6AF1FC25E1B0A43042F2F815A8C4B2D40F302E4DD3DA4B64BF82B0D6E721E1928AD83EEA47799F210A855EFB825067090A2114C8792C316B8B9F5453680E4CCE5FE87E','','width=800,height=600,toolbar=0,status=0,location=0,menubar=0,scrollbars=1,resizable=1');winCheckAssotiations.focus();"><img src="images/related.png" border=0 alt="Related" width="20"></a>&nbsp;</td>
+                    </TR>
+                  </TBODY>
+                  </TABLE>
+<!--/maintable-->
+                </TD>
+              </TR>
+            </TABLE>
+          </TD>
+          <td><img src="images/spacer.gif" border=0 width=20 height=1></td>
+        </TR>
+        <tr><TD colspan="3">&nbsp;</TD></TR>
+      </table>
+    </td>
+  <TD width=5 background=Images/tbl_d.gif><img src="images/spacer.gif" width=5></TD>
+</TR>
+<TR>
+  <TD width=5 height=5><IMG height=5 alt="" src="images/tbl_bas_g.gif" width=5 border=0></TD>
+  <TD width=836 background=images/tbl_bas.gif height=5></TD>
+  <TD width=41 height=5><IMG height=5 alt="" src="images/tbl_bas_d.gif" width=5 border=0></TD>
+</TR>
+</TBODY>
+</TABLE>
+</td>
+<td><img src="images/spacer.gif" border=0 width=20 height=1></td>
+</tr>
+</table>
+</td>
+<tr><td valign="bottom" colspan="3"><!--FOOTER-->
+	<br/>
+	<table width="100%" height="23" border="0" cellpadding="0" cellspacing="0" class="bordertable">
+		<tr>
+			<td class="bordertableheader" align="center" height="23">Copyright &copy; 2016 Electronics For Imaging, Inc.<br>Version: 16.1.1</td>
+		</tr>
+	</table>
+<!--/FOOTER-->
+  
+    
+<script language="javascript">
+
+        function defaultBoxes() {
+            var strOther = 'Custom HTMLs';
+            var strOtherLC = '';
+
+			if (document.getElementById('divDBAreas'))
+			{
+				loadDashboardAreas();
+				document.getElementById('txtURL').value = document.location;
+				document.getElementById('txtURL').value = document.getElementById('txtURL').value.substr(document.getElementById('txtURL').value.lastIndexOf("/") + 1);
+				if (document.getElementById('txtName').value.toLowerCase() == '{' + 'dashboardlinkname' + '}')document.getElementById('txtName').value = '';
+				
+				if (document.getElementById('txtName').value == '')
+				{
+					var cells = document.getElementsByTagName("h1"); 
+					for (var i = 0; i < cells.length; i++)
+					{
+						document.getElementById('txtName').value = cells[i].innerHTML;
+						break;
+					}
+					if (document.getElementById('txtName').value == '')document.getElementById('txtName').value = document.title;
+				}
+				if (strOther.toLowerCase() == '{' + 'dashboardarea' + '}') strOther = '';
+				
+				if (strOther != '') {
+					strOtherLC = strOther.toLowerCase();
+					for (var i = 0; i < document.getElementById('selAreas').length; i++) {
+							
+						if (document.getElementById('selAreas').options[i].value.toLowerCase() == strOtherLC) {
+							document.getElementById('selAreas').selectedIndex = i;
+							document.getElementById('txtOther').style.display = 'none';
+							break;
+						}
+					}
+					document.getElementById('txtOther').value = strOther;
+				}
+			}
+        }
+
+        function showHideOther(cboCur) {
+            if (document.getElementById('selAreas').selectedIndex > 0)
+            { document.getElementById('txtOther').style.display = 'none' }
+            else { document.getElementById('txtOther').style.display = '' }
+
+        }
+
+        function addToDashboard() {
+            var objXML = null;
+            var strArea = document.getElementById('txtOther').value;
+
+            if (document.getElementById('selAreas').selectedIndex >0)strArea = document.getElementById('selAreas').value;
+            document.getElementById('adddashboard').style.display = 'none'
+
+            objXML = AjaxGet('DashboardAdd.asp?page=' + escape(document.getElementById('txtURL').value) + '&name=' + escape(document.getElementById('txtName').value) + '&desc=' + escape(document.getElementById('txtDescription').value) + '&area=' + escape(strArea), null, false, objXML);
+
+            if (typeof loadDashboard == 'function') loadDashboard();
+
+        }
+
+
+        function loadDashboardAreas() {
+            var objXML = null;
+
+            objXML = AjaxGet('DashboardAdd.asp?type=loadareas', null, false, objXML);
+            if (objXML != null)document.getElementById('divDBAreas').innerHTML = '<select name="selAreas" id="selAreas" onchange="showHideOther(this)">' + objXML.responseText + '</select>';
+        }
+        defaultBoxes();
+	
+</script></td></tr></table>
+<script language=javascript>
+    // <!--custom_javascript2-->
+</script>
+</BODY>
+</HTML>
