@@ -15,9 +15,9 @@ html, body {
     font-family: 'Lato', sans-serif;
 }
 
-/* body.Enter.Details {
+body.Enter.Details {
     
-} */
+}
 
 .bg {
     position: absolute;
@@ -77,7 +77,7 @@ a.btn.btn-hero {
 input.btn-primary,
 button.btn-primary {
     background: none;
-    padding: 10px 15px;
+    padding: 10px; 15px;
     border: 3px solid #007abf;
     border-radius: 0;
     color: #333333;
@@ -366,9 +366,9 @@ img#thumbBackLP {
     opacity: 1;
 }
 
-/* .nav .nav-links .dropdown-menu > .container {
+.nav .nav-links .dropdown-menu > .container {
 
-} */
+}
 
 .nav .nav-links ul > li > a,
 .nav .nav-links ul > li > .dropdown > a {
@@ -448,9 +448,9 @@ img#thumbBackLP {
     color: #333;
 }
 
-/* .nav .nav-links ul > li > .dropdown ul.all-products li a {
+.nav .nav-links ul > li > .dropdown ul.all-products li a {
 
-} */
+}
 
 .nav .nav-links ul > li > .dropdown > .dropdown-menu > ul > li {
     width: 100%;
@@ -724,9 +724,9 @@ img#thumbBackLP {
     background: #ffffff;
 }
 
-/* .product-filter {
+.product-filter {
 
-} */
+}
 
 .product-filter h2 {
     font-size: 18px;
@@ -1178,13 +1178,13 @@ img#thumbBackLP {
     max-height: 400px;
 }
 
-/* .front-back-details .product-description {
+.front-back-details .product-description {
 
-} */
+}
 
-/* .front-back-details .product-description .descriptions .description {
+.front-back-details .product-description .descriptions .description {
 
-} */
+}
 
 .front-back-details .product-description .descriptions .description .colors {
     padding: 10px 0 25px;
