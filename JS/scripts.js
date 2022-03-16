@@ -47,3 +47,4 @@ $(function() {
 		$('#btnCartContinue, #btnCart').addClass('btn btn-primary');
 		sessionStorage.clear();
 	}
+});
