@@ -527,7 +527,6 @@
         objObject.style.opacity = opacity/100;
     }
 
-
 </script>
 
 <!--TabTableStart-->
@@ -731,4 +730,36 @@
 </form>
 
 <br>
+
+<script>
+        // The following code prevents the user from clicking the Next>> button before selecting an option from the 'Use Address' dropdown.
+    console.log('Script has been read.');
+    document.getElementsByName("btnSubmit").attribute('disabled', 'true');
+
+    function disableBtn() {
+        let address = document.getElementsByName("DefaultAddress");
+        let addressBtn = document.getElementsByName("btnSubmit");
+        if (address.value = null) {
+            addressBtn.attribute('disabled', 'true');
+        }else{
+            addressBtn.attribute('disabled', 'false');
+        };
+        console.log('disableBtn has been called.');
+    };
+
+    document.getElementsByName("DefaultAddress").setAttribute("onChange", disableBtn());
+
+    function disabledAlert() {
+        let addressBtn = document.getElementsByName("btnSubmit");
+        if (addressBtn.attribute('disabled') = null) {
+            alert("Please select an address from the drop-down menu.");
+        };
+        console.log('disabledAlert has been called.');
+    }
+
+    document.getElementsByName("btnSubmit").setAttribute("onClick", disabledAlert());
+
+    console.log('Bottom of script has been reached.');
+
+</script>
 <!--TabTableEnd-->
