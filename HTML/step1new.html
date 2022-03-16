@@ -739,12 +739,13 @@
     console.log('btnSbmt attribute set.');
 
 
-    function disableBtn() {
+    function disableBtn(event) {
         let address = document.getElementsByName("DefaultAddress");
         let addressBtn = document.getElementsByName("btnSubmit");
         if (address.value = null) {
             addressBtn.setAttribute('disabled', 'true');
         }else{
+            let addressBtn = document.getElementsByName("btnSubmit");
             addressBtn.setAttribute('disabled', 'false');
         };
         console.log('disableBtn has been called.');
@@ -754,7 +755,7 @@
     defaultAddr.addEventListener("onChange", disableBtn());
     // console.log('disableBtn has been called.')
 
-    function disabledAlert() {
+    function disabledAlert(event) {
         let addressBtn = document.getElementsByName("btnSubmit");
         if (addressBtn.attribute('disabled') = null) {
             alert("Please select an address from the drop-down menu.");
