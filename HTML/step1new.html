@@ -734,7 +734,10 @@
 <script>
         // The following code prevents the user from clicking the Next>> button before selecting an option from the 'Use Address' dropdown.
     console.log('Script has been read.');
-    document.getElementsByName("btnSubmit").setAttribute('disabled', 'true');
+    let btnSbmt = document.getElementsByName("btnSubmit");
+    btnSubmit.setAttribute('disabled', 'true');
+    console.log('btnSbmt attribute set.');
+
 
     function disableBtn() {
         let address = document.getElementsByName("DefaultAddress");
@@ -747,7 +750,8 @@
         console.log('disableBtn has been called.');
     };
 
-    document.getElementsByName("DefaultAddress").addEventListener("onChange", disableBtn);
+    let defaultAddr = document.getElementsByName("DefaultAddress");
+    defaultAddr.addEventListener("onChange", disableBtn);
 
     function disabledAlert() {
         let addressBtn = document.getElementsByName("btnSubmit");
@@ -757,8 +761,8 @@
         console.log('disabledAlert has been called.');
     }
 
-    document.getElementsByName("btnSubmit").addEventListener("onClick", disabledAlert);
-
+    let buttonSbmt = document.getElementsByName("btnSubmit");
+    buttonSbmt.addEventListener("onClick", disabledAlert);
     console.log('Bottom of script has been reached.');
 
 </script>
