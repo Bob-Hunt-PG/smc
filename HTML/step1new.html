@@ -737,7 +737,7 @@
     document.getElementsByName("btnSubmit").attribute('disabled', true);
 
     function disableBtn() {
-        let address = document.getElementsByName("DefaultAddresses");
+        let address = document.getElementsByName("DefaultAddress");
         let addressBtn = document.getElementsByName("btnSubmit");
         if (address.value = null) {
             addressBtn.attribute('disabled', true);
@@ -747,7 +747,7 @@
         console.log('disableBtn has been called.');
     };
 
-    document.getElementsByName("DefaultAddresses").setAttribute("onChange", disableBtn());
+    document.getElementsByName("DefaultAddress").setAttribute("onChange", disableBtn());
 
     function disabledAlert() {
         let addressBtn = document.getElementsByName("btnSubmit");
