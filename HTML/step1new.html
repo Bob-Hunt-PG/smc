@@ -732,33 +732,47 @@
 <br>
 
 <script>
-        // The following code prevents the user from clicking the Next>> button before selecting an option from the 'Use Address' dropdown.
+    // The following code prevents the user from clicking the Next>> button before selecting an option from the 'Use Address' dropdown.
     console.log('Script has started.');
-    // document.getElementsByName("btnSubmit").attribute('disabled', 'true');
 
-    function disableBtn() {
+    let btnSbmt = document.getElementsByName("btnSubmit");
+    console.log('btnSbmt = ' + btnSbmt);
+    btnSbmt.setAttribute('disabled', 'true');
+    console.log('btnSbmt attribute set.');
+    console.log('value = ' + btnSbmt.disabled.value);
+
+    function disableBtn(event) {
+        console.log('disableBtn has started.');
         let address = document.getElementsByName("DefaultAddress");
+        console.log('address = ' + address);
         let addressBtn = document.getElementsByName("btnSubmit");
+        console.log('addressBtn = ' + addressBtn);
         if (address.value = null) {
-            addressBtn.attribute('disabled', 'true');
+            addressBtn.setAttribute('disabled', 'true');
         }else{
-            addressBtn.attribute('disabled', 'false');
+            let addressBtn = document.getElementsByName("btnSubmit");
+            console.log('addressBtn = ' + addressBtn);
+            addressBtn.setAttribute('disabled', 'false');
         };
         console.log('disableBtn has been called.');
     };
 
-    document.getElementsByName("DefaultAddress").setAttribute("onChange", disableBtn);
+    let defaultAddr = document.getElementsByName("DefaultAddress");
+    Console.log('defaultAddr = ' + defaultAddr);
+    defaultAddr.addEventListener("onChange", disableBtn());
 
-    function disabledAlert() {
+    function disabledAlert(event) {
+        console.log('disableAlert has started.');
         let addressBtn = document.getElementsByName("btnSubmit");
+        console.log('disableBtn = ' + disableBtn);
         if (addressBtn.attribute('disabled') = null) {
             alert("Please select an address from the drop-down menu.");
         };
         console.log('disabledAlert has been called.');
     }
 
-    document.getElementsByName("btnSubmit").setAttribute("onClick", disabledAlert);
-
+    let buttonSbmt = document.getElementsByName("btnSubmit");
+    buttonSbmt.addEventListener("onClick", disabledAlert());
     console.log('Bottom of script has been reached.');
 
 </script>
