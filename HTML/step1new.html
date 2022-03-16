@@ -751,7 +751,8 @@
     };
 
     let defaultAddr = document.getElementsByName("DefaultAddress");
-    defaultAddr.addEventListener("onChange", disableBtn);
+    defaultAddr.addEventListener("onChange", disableBtn());
+    // console.log('disableBtn has been called.')
 
     function disabledAlert() {
         let addressBtn = document.getElementsByName("btnSubmit");
@@ -762,7 +763,7 @@
     }
 
     let buttonSbmt = document.getElementsByName("btnSubmit");
-    buttonSbmt.addEventListener("onClick", disabledAlert);
+    buttonSbmt.addEventListener("onClick", disabledAlert());
     console.log('Bottom of script has been reached.');
 
 </script>
