@@ -747,7 +747,7 @@
         console.log('disableBtn has been called.');
     };
 
-    document.getElementsByName("DefaultAddress").setAttribute("onChange", disableBtn());
+    document.getElementsByName("DefaultAddress").setAttribute("onChange", disableBtn);
 
     function disabledAlert() {
         let addressBtn = document.getElementsByName("btnSubmit");
@@ -757,7 +757,7 @@
         console.log('disabledAlert has been called.');
     }
 
-    document.getElementsByName("btnSubmit").setAttribute("onClick", disabledAlert());
+    document.getElementsByName("btnSubmit").setAttribute("onClick", disabledAlert);
 
     console.log('Bottom of script has been reached.');
 
