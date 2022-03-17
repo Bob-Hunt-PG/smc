@@ -797,7 +797,10 @@
         console.log('2.2 button #1: ' + btnSbmt[0])
         console.log('2.3 button #1 type: ' + btnSbmt[0].type);
         // console.log('2.5 value = ' + btnSbmt.disabled.value);
-        document.getElementsByName('btnSubmit').disabled = true;
+        btnSbmt.forEach((sbmtBtn) => {
+            sbmtBtn.disabled = true;
+        });
+        // document.getElementsByName('btnSubmit').disabled = true;
         console.log('3 btnSbmt attribute set.');
         console.log('4 value = ' + btnSbmt.disabled.value);
         console.log('4.1 value = ' + btnSbmt.disabled);
