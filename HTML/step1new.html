@@ -733,47 +733,102 @@
 
 <script>
     // The following code prevents the user from clicking the Next>> button before selecting an option from the 'Use Address' dropdown.
-    console.log('Script has started.');
+    console.log('1 Script has started.');
 
-    let btnSbmt = document.getElementsByName("btnSubmit");
-    console.log('btnSbmt = ' + btnSbmt.value);
-    btnSbmt.setAttribute('disabled', 'true');
-    console.log('btnSbmt attribute set.');
-    console.log('value = ' + btnSbmt.disabled.value);
+    // let btnSbmt = document.getElementsByName("btnSubmit");
+    // console.log('2 btnSbmt.disabled = ' + btnSbmt.disabled);
+    // document.getElementsByName('btnSubmit').disabled = true;
+    // console.log('3 btnSbmt attribute set.');
+    // console.log('4 value = ' + btnSbmt.disabled.value);
+    // console.log('4.5 value = ' + btnSbmt.disabled);
+    // let address = document.getElementsByName("DefaultAddress");
+    // let addressBtn = document.getElementsByName("btnSubmit");
 
     function disableBtn(event) {
-        console.log('disableBtn has started.');
+        console.log('5 disableBtn has started.');
         let address = document.getElementsByName("DefaultAddress");
-        console.log('address = ' + address);
+        console.log('6 address = ' + address.value)
+        console.log('6a address == null?' + (address==null));
+        console.log('6b address == undefined?' + (address==undefined));
         let addressBtn = document.getElementsByName("btnSubmit");
-        console.log('addressBtn = ' + addressBtn);
-        if (address.value = null) {
-            addressBtn.setAttribute('disabled', 'true');
-        }else{
-            let addressBtn = document.getElementsByName("btnSubmit");
-            console.log('addressBtn = ' + addressBtn);
-            addressBtn.setAttribute('disabled', 'false');
-        };
-        console.log('disableBtn has been called.');
+        console.log('7 addressBtn = ' + addressBtn.disabled);
+        address.forEach((addr) => {
+
+            if ((addr.value == null) || (addr.value == undefined) || (addr.value == '')) {
+                console.log('7a address.value = ' + addr.value);
+                addressBtn.disabled = true;
+                console.log('7b addressBtn = ' + addressBtn.disabled);
+            }else{
+                // let addressBtn = document.getElementsByName("btnSubmit");
+                console.log('8 address.value = ' + addr.value);
+                addressBtn.disabled = false;
+                console.log('8a addressBtn = ' + addressBtn.disabled);
+            };
+        });
+        console.log('9 disableBtn has been called.');
+        console.log('9a address.value = ' + address.value);
+        console.log('9b addressBtn = ' + addressBtn.disabled);
     };
 
-    let defaultAddr = document.getElementsByName("DefaultAddress");
-    Console.log('defaultAddr = ' + defaultAddr);
-    defaultAddr.addEventListener("onChange", disableBtn());
+    // let defaultAddr = document.getElementsByName("DefaultAddress");
+    // console.log('10 defaultAddr = ' + defaultAddr.value);
+
+    // document.getElementsByName("DefaultAddress").addEventListener("change", disableBtn);
+    // defaultAddress.onChange = disableBtn;
 
     function disabledAlert(event) {
-        console.log('disableAlert has started.');
+        console.log('11 disabledAlert has started.');
         let addressBtn = document.getElementsByName("btnSubmit");
-        console.log('disableBtn = ' + disableBtn);
-        if (addressBtn.attribute('disabled') = null) {
+        console.log('12 disableBtn = ' + disableBtn);
+        addressBtn.forEach((addrBtn) => {
+            if (addrBtn.attribute('disabled') == true) {
             alert("Please select an address from the drop-down menu.");
-        };
-        console.log('disabledAlert has been called.');
+            };
+        });
+        console.log('13 disabledAlert has been called.');
     }
 
-    let buttonSbmt = document.getElementsByName("btnSubmit");
-    buttonSbmt.addEventListener("onClick", disabledAlert());
-    console.log('Bottom of script has been reached.');
+    // After the window has built and Defaultdynamically created 
+    window.onload = function(){  
+     
+        let btnSbmt = document.getElementsByName("btnSubmit");
+        console.log('2 Number of buttons = ' + btnSbmt.length); 
+        console.log('2.1 btnSbmt.disabled = ' + btnSbmt.disabled);
+        console.log('2.2 button #1: ' + btnSbmt[0])
+        console.log('2.3 button #1 type: ' + btnSbmt[0].type);
+        // console.log('2.5 value = ' + btnSbmt.disabled.value);
+        document.getElementsByName('btnSubmit').disabled = true;
+        console.log('3 btnSbmt attribute set.');
+        console.log('4 value = ' + btnSbmt.disabled.value);
+        console.log('4.1 value = ' + btnSbmt.disabled);
+        console.log('4.2 btnSbmt type:' + btnSbmt.type)
+        let defaultAddr = document.getElementsByName("DefaultAddress");
+        console.log('4.3 Number of addresses: ' + defaultAddr.length);
+        console.log('4.4 Address value:' + defaultAddr.value);
+        console.log('4.5 address type:' + defaultAddr[0].type);
+        defaultAddr.forEach((addr) => {
+            console.log('Updating addr');
+            addr.addEventListener("change", disableBtn);
+        });
+        console.log('4.8 Add disableBtn: Done');
+
+        let addressBtn = document.getElementsByName("btnSubmit");
+        addressBtn.forEach((btn) => {
+            console.log('Updating btn');
+            btn.addEventListener("click", disabledAlert);
+        });
+        console.log('4.9 Add disabledAlert: Done')
+        // document.getElementsByName("DefaultAddress").forEach.addEventListener("change", disableBtn);
+        // console.log('4.8 Done')
+        // document.getElementsByName("btnSubmit").addEventListener("click", disabledAlert);
+        // console.log('4.9 Done')
+        console.log('10 defaultAddr = ' + defaultAddr);
+
+        console.log("14 window function completed")
+    }
+
+    console.log('15 Bottom of script has been reached.');
+
 
 </script>
 <!--TabTableEnd-->
